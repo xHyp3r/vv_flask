@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -17,6 +17,10 @@ def contact():
 @app.route('/home')
 def home():
   return render_template('home.html')
+
+@app.route('/params')
+def params():
+  return render_template('params.html', args = request.args.to_dict())
 
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', port = 5211, threaded = True, debug = True)
