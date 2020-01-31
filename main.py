@@ -22,5 +22,9 @@ def home():
 def params():
   return render_template('params.html', args = request.args.to_dict())
 
+@app.route('/post', methods = ['POST'])
+def post():
+  return request.json()
+
 if __name__ == '__main__':
   app.run(host = '0.0.0.0', port = 5211, threaded = True, debug = True)
